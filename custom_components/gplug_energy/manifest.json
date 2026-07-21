@@ -5,9 +5,9 @@
   "config_flow": true,
   "dependencies": ["frontend", "http"],
   "documentation": "https://github.com/DjangoToni/gplug-energy-cockpit",
-  "issue_tracker": "https://github.com/DjangoToni/gplug-energy-cockpit/issues",
   "integration_type": "service",
   "iot_class": "local_push",
+  "issue_tracker": "https://github.com/DjangoToni/gplug-energy-cockpit/issues",
   "requirements": [],
   "version": "0.3.3"
 }
