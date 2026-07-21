@@ -1,0 +1,110 @@
+{
+  "title": "gPlug Energy Cockpit",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select gPlug",
+        "description": "Select the existing gPlug, Tasmota, or MQTT device. This is optional but improves automatic mapping.",
+        "data": {"name": "Cockpit name", "source_device": "gPlug device"}
+      },
+      "power": {
+        "title": "Power and main meters",
+        "description": "Verify the suggested sensors. Use either signed net power or separate import and export power.",
+        "data": {
+          "net_power": "Net power (import positive, export negative)",
+          "import_power": "Current import power",
+          "export_power": "Current export power",
+          "import_energy": "Total imported energy",
+          "export_energy": "Total exported energy"
+        }
+      },
+      "details": {
+        "title": "Tariffs and grid diagnostics",
+        "description": "All values are optional. Missing values are hidden automatically.",
+        "data": {
+          "import_energy_t1": "Imported energy tariff 1",
+          "import_energy_t2": "Imported energy tariff 2",
+          "export_energy_t1": "Exported energy tariff 1",
+          "export_energy_t2": "Exported energy tariff 2",
+          "voltage_l1": "Voltage L1", "voltage_l2": "Voltage L2", "voltage_l3": "Voltage L3",
+          "current_l1": "Current L1", "current_l2": "Current L2", "current_l3": "Current L3",
+          "frequency": "Grid frequency"
+        }
+      },
+      "options": {
+        "title": "Cost and optional solar system",
+        "description": "The inverter sensor must provide grid power in W or kW. Costs are calculated from today's energy.",
+        "data": {
+          "inverter_grid_power": "Inverter grid power (optional)",
+          "invert_net_power": "Invert direct net-power sign",
+          "invert_inverter_power": "Invert inverter-power sign",
+          "import_price": "Import price per kWh",
+          "export_price": "Export remuneration per kWh",
+          "currency": "Currency",
+          "percent_minimum": "Only compare percentage above power"
+        }
+      }
+    },
+    "error": {"power_required": "Select at least one net, import, or export power sensor."},
+    "abort": {"already_configured": "This gPlug device is already configured."}
+  },
+  "options": {
+    "step": {
+      "power": {
+        "title": "Edit power and main meters",
+        "description": "Remap current power and total energy meters.",
+        "data": {
+          "net_power": "Net power (import positive, export negative)",
+          "import_power": "Current import power",
+          "export_power": "Current export power",
+          "import_energy": "Total imported energy",
+          "export_energy": "Total exported energy"
+        }
+      },
+      "details": {
+        "title": "Edit tariffs and grid diagnostics",
+        "description": "Unavailable values may remain empty. I1, I2, and I3 can be used without voltage sensors.",
+        "data": {
+          "import_energy_t1": "Imported energy tariff 1",
+          "import_energy_t2": "Imported energy tariff 2",
+          "export_energy_t1": "Exported energy tariff 1",
+          "export_energy_t2": "Exported energy tariff 2",
+          "voltage_l1": "Voltage L1", "voltage_l2": "Voltage L2", "voltage_l3": "Voltage L3",
+          "current_l1": "Current L1", "current_l2": "Current L2", "current_l3": "Current L3",
+          "frequency": "Grid frequency"
+        }
+      },
+      "comparison": {
+        "title": "Edit cost and solar system",
+        "description": "Inverter grid power must be an instantaneous W or kW value, not a kWh energy meter.",
+        "data": {
+          "inverter_grid_power": "Inverter grid power (optional)",
+          "invert_net_power": "Invert direct net-power sign",
+          "invert_inverter_power": "Invert inverter-power sign",
+          "import_price": "Import price per kWh",
+          "export_price": "Export remuneration per kWh",
+          "currency": "Currency",
+          "percent_minimum": "Only compare percentage above power"
+        }
+      }
+    },
+    "error": {"power_required": "Select at least one net, import, or export power sensor."}
+  },
+  "entity": {
+    "sensor": {
+      "meter_status": {"name": "Status", "state": {"online": "Online", "stale": "Stale"}},
+      "net_power": {"name": "Net power"}, "import_power": {"name": "Import power"}, "export_power": {"name": "Export power"},
+      "import_today": {"name": "Grid import today"}, "export_today": {"name": "Grid export today"},
+      "import_cost_today": {"name": "Import cost today"}, "export_revenue_today": {"name": "Export revenue today"}, "net_cost_today": {"name": "Net cost today"},
+      "peak_import_today": {"name": "Peak import today"}, "peak_export_today": {"name": "Peak export today"}, "data_age": {"name": "Meter data age"},
+      "import_energy_total": {"name": "Total grid import"}, "export_energy_total": {"name": "Total grid export"},
+      "import_energy_t1": {"name": "Grid import tariff 1"}, "import_energy_t2": {"name": "Grid import tariff 2"},
+      "export_energy_t1": {"name": "Grid export tariff 1"}, "export_energy_t2": {"name": "Grid export tariff 2"},
+      "voltage_l1": {"name": "Voltage L1"}, "voltage_l2": {"name": "Voltage L2"}, "voltage_l3": {"name": "Voltage L3"},
+      "current_l1": {"name": "Current L1"}, "current_l2": {"name": "Current L2"}, "current_l3": {"name": "Current L3"},
+      "frequency": {"name": "Grid frequency"}, "voltage_imbalance": {"name": "Voltage imbalance"},
+      "inverter_grid_power": {"name": "Inverter grid power"}, "inverter_difference": {"name": "Inverter difference"},
+      "inverter_absolute_difference": {"name": "Absolute inverter difference"}, "inverter_agreement": {"name": "Inverter agreement"}
+    }
+  }
+}

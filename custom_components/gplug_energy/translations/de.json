@@ -1,0 +1,144 @@
+{
+  "title": "gPlug Energy Cockpit",
+  "config": {
+    "step": {
+      "user": {
+        "title": "gPlug auswählen",
+        "description": "Wähle das vorhandene gPlug-, Tasmota- oder MQTT-Gerät. Die Auswahl ist optional, erleichtert aber die automatische Zuordnung.",
+        "data": {
+          "name": "Name des Cockpits",
+          "source_device": "gPlug-Gerät"
+        }
+      },
+      "power": {
+        "title": "Leistung und Hauptzähler",
+        "description": "Prüfe die automatisch erkannten Sensoren. Verwende entweder eine vorzeichenbehaftete Netzleistung oder getrennte Bezugs- und Einspeiseleistung.",
+        "data": {
+          "net_power": "Netzleistung (Bezug positiv, Einspeisung negativ)",
+          "import_power": "Aktuelle Bezugsleistung",
+          "export_power": "Aktuelle Einspeiseleistung",
+          "import_energy": "Gesamtenergie Netzbezug",
+          "export_energy": "Gesamtenergie Einspeisung"
+        }
+      },
+      "details": {
+        "title": "Tarife und Netzdiagnose",
+        "description": "Alle Angaben sind optional. Nicht vorhandene Werte werden im Cockpit automatisch ausgeblendet.",
+        "data": {
+          "import_energy_t1": "Netzbezug Tarif 1",
+          "import_energy_t2": "Netzbezug Tarif 2",
+          "export_energy_t1": "Einspeisung Tarif 1",
+          "export_energy_t2": "Einspeisung Tarif 2",
+          "voltage_l1": "Spannung L1",
+          "voltage_l2": "Spannung L2",
+          "voltage_l3": "Spannung L3",
+          "current_l1": "Strom L1",
+          "current_l2": "Strom L2",
+          "current_l3": "Strom L3",
+          "frequency": "Netzfrequenz"
+        }
+      },
+      "options": {
+        "title": "Kosten und optionale Solaranlage",
+        "description": "Der Wechselrichtersensor muss die Netzleistung in W oder kW liefern. Kosten werden aus den Tagesenergien berechnet.",
+        "data": {
+          "inverter_grid_power": "Netzleistung Wechselrichter (optional)",
+          "invert_net_power": "Vorzeichen der direkten Netzleistung umkehren",
+          "invert_inverter_power": "Vorzeichen der Wechselrichterleistung umkehren",
+          "import_price": "Bezugspreis je kWh",
+          "export_price": "Einspeisevergütung je kWh",
+          "currency": "Währung",
+          "percent_minimum": "Prozentvergleich erst ab Leistung"
+        }
+      }
+    },
+    "error": {
+      "power_required": "Wähle mindestens einen Sensor für Netz-, Bezugs- oder Einspeiseleistung."
+    },
+    "abort": {
+      "already_configured": "Dieses gPlug-Gerät ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "power": {
+        "title": "Leistung und Hauptzähler bearbeiten",
+        "description": "Ordne die aktuellen Leistungs- und Gesamtzähler neu zu.",
+        "data": {
+          "net_power": "Netzleistung (Bezug positiv, Einspeisung negativ)",
+          "import_power": "Aktuelle Bezugsleistung",
+          "export_power": "Aktuelle Einspeiseleistung",
+          "import_energy": "Gesamtenergie Netzbezug",
+          "export_energy": "Gesamtenergie Einspeisung"
+        }
+      },
+      "details": {
+        "title": "Tarife und Netzdiagnose bearbeiten",
+        "description": "Nicht vorhandene Werte dürfen leer bleiben. Für gPlug können I1, I2 und I3 auch ohne Spannungssensoren verwendet werden.",
+        "data": {
+          "import_energy_t1": "Netzbezug Tarif 1",
+          "import_energy_t2": "Netzbezug Tarif 2",
+          "export_energy_t1": "Einspeisung Tarif 1",
+          "export_energy_t2": "Einspeisung Tarif 2",
+          "voltage_l1": "Spannung L1",
+          "voltage_l2": "Spannung L2",
+          "voltage_l3": "Spannung L3",
+          "current_l1": "Strom L1",
+          "current_l2": "Strom L2",
+          "current_l3": "Strom L3",
+          "frequency": "Netzfrequenz"
+        }
+      },
+      "comparison": {
+        "title": "Kosten und Solaranlage bearbeiten",
+        "description": "Die Wechselrichter-Netzleistung muss eine momentane Leistung in W oder kW sein, kein Energiezähler in kWh.",
+        "data": {
+          "inverter_grid_power": "Netzleistung Wechselrichter (optional)",
+          "invert_net_power": "Vorzeichen der direkten Netzleistung umkehren",
+          "invert_inverter_power": "Vorzeichen der Wechselrichterleistung umkehren",
+          "import_price": "Bezugspreis je kWh",
+          "export_price": "Einspeisevergütung je kWh",
+          "currency": "Währung",
+          "percent_minimum": "Prozentvergleich erst ab Leistung"
+        }
+      }
+    },
+    "error": {
+      "power_required": "Wähle mindestens einen Sensor für Netz-, Bezugs- oder Einspeiseleistung."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "meter_status": {"name": "Status", "state": {"online": "Online", "stale": "Veraltet"}},
+      "net_power": {"name": "Netzleistung"},
+      "import_power": {"name": "Bezugsleistung"},
+      "export_power": {"name": "Einspeiseleistung"},
+      "import_today": {"name": "Netzbezug heute"},
+      "export_today": {"name": "Einspeisung heute"},
+      "import_cost_today": {"name": "Bezugskosten heute"},
+      "export_revenue_today": {"name": "Einspeisevergütung heute"},
+      "net_cost_today": {"name": "Nettokosten heute"},
+      "peak_import_today": {"name": "Bezugsspitze heute"},
+      "peak_export_today": {"name": "Einspeisespitze heute"},
+      "data_age": {"name": "Alter der Messdaten"},
+      "import_energy_total": {"name": "Netzbezug gesamt"},
+      "export_energy_total": {"name": "Einspeisung gesamt"},
+      "import_energy_t1": {"name": "Netzbezug Tarif 1"},
+      "import_energy_t2": {"name": "Netzbezug Tarif 2"},
+      "export_energy_t1": {"name": "Einspeisung Tarif 1"},
+      "export_energy_t2": {"name": "Einspeisung Tarif 2"},
+      "voltage_l1": {"name": "Spannung L1"},
+      "voltage_l2": {"name": "Spannung L2"},
+      "voltage_l3": {"name": "Spannung L3"},
+      "current_l1": {"name": "Strom L1"},
+      "current_l2": {"name": "Strom L2"},
+      "current_l3": {"name": "Strom L3"},
+      "frequency": {"name": "Netzfrequenz"},
+      "voltage_imbalance": {"name": "Spannungsungleichgewicht"},
+      "inverter_grid_power": {"name": "Wechselrichter Netzleistung"},
+      "inverter_difference": {"name": "Wechselrichter-Abweichung"},
+      "inverter_absolute_difference": {"name": "Absolute Wechselrichter-Abweichung"},
+      "inverter_agreement": {"name": "Wechselrichter-Übereinstimmung"}
+    }
+  }
+}
